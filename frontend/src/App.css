@@ -12,3 +12,29 @@ body{
   margin-top: 60%;
   
 }
+
+.weather{
+  float: right;
+}
+.calendar{
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 300px;
+  height: 300px;
+}
+
+#clock{
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 50%;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'Jua';
+  color: white;
+}
+
+
+
+body{
+  background-color: black;
+}
