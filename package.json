@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "cd backend && npm run dev"
+    "start": "cd backend && npm run dev"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/smart-mirror-team-project/smartmirror-web/issues"
   },
-  "homepage": "https://github.com/smart-mirror-team-project/smartmirror-web#readme"
+  "homepage": "https://github.com/smart-mirror-team-project/smartmirror-web#readme",
+  "dependencies": {
+    "socket.io": "^4.0.0"
+  }
 }
