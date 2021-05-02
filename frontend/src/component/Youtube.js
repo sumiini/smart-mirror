@@ -12,18 +12,13 @@ const [id,setId] = useState('')
 // })();
 
 
-useEffect(()=>{
-  
   socket.on('connection', function () {
     socket.on('socket',function(data){
       setId(data)
       
     });
   })
-  
-  console.log(id)
 
-},[id])
 
 
     return(
