@@ -25,8 +25,6 @@ router.get('/button', function(req,res,next){
     console.log(data);
     //res.render('emotion',{emotion: data})
     youtubePlay({data : data});
-   //console.log(youtubePlay(data))
-    //response =youtubePlay(data);
      
   });
   //console.log("파이썬밖!!!!!!!!!!!!",response)
