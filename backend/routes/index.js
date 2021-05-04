@@ -24,7 +24,7 @@ router.get('/button', function(req,res,next){
     if (err) throw err;  
     console.log(data);
     //res.render('emotion',{emotion: data})
-    youtubePlay(data)
+    youtubePlay({data : data});
    //console.log(youtubePlay(data))
     //response =youtubePlay(data);
      
@@ -32,5 +32,9 @@ router.get('/button', function(req,res,next){
   //console.log("파이썬밖!!!!!!!!!!!!",response)
 });
 
+router.post('/getdata', function(req,res,next){
+  console.log(req.body.item[0].id.videoId)
+  
+})
 
 module.exports = router;

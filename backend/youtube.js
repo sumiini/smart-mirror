@@ -63,29 +63,25 @@ module.exports = (data) => {
         // console.log(response)
         return response.json();
     })
-        .then(function (result) {
-            //console.log(result)
-            const items = result["items"];
-            console.log(items)
-            console.log("!!!!!!!!!!!!!"+items[0].id.videoId)
-            
-            
-            
-            //module.exports={uid:items[0].id.videoId}
-            // router.io.on('connection',function(socket){
-            //     console.log("Connected !");
-            //     socket.emit("socket",{"videoid":items[0].id.videoId});
-            // });
-            // 목록 중에 가장 위에 있는 것, 그것의 videoId 추출
-            // 즉, 프론트 부로 items[0].id.videoId 보내줘야함. But How??
-            // res.render('youtube', { items: items });
-           
-            //app.locals.youid=items[0].id.videoId;
-            //return items[0].id.videoId; 
+    .then(function (result) {
+        //console.log(result)
+        const items = result["items"];
+        global.uid = items[0].id.videoId;
+        //console.log(items)
+        //console.log(items[0].id.videoId)
+        // 목록 중에 가장 위에 있는 것, 그것의 videoId 추출
+        // 즉, 프론트 부로 items[0].id.videoId 보내줘야함. But How??
+        axios.post('http://localhost:3001/getdata', {
+            item: items
+        })
+        return items      
+    // });
 
-        })
-        .catch(function (err) {
-            console.log(err)
-        })
+        // res.render('youtube', { items: items });
+        
+    })
+    .catch(function (err) {
+        console.log(err)
+    })
       
 }
