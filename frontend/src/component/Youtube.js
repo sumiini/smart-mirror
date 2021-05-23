@@ -5,25 +5,38 @@ import socketio from 'socket.io-client';
 
 const Youtube =()=>{
     const [youtubeId,setYoutubeId]=useState("")
-    const socket = socketio.connect('http://localhost:3001/');
-(() => {
-  socket.emit('init', { name: 'bella' });
+    const [getId,setGetId]=useState("")
 
-  socket.on('welcome', (msg) => {
-    console.log(msg);
-  });
+    useEffect(()=>{
+      const socket = socketio.connect('http://localhost:3001/');
 
-  socket.emit('youtube',{videoID : 'give me a videoID'});
-  socket.on('videoID', (msg) => {
-    console.log("id"+msg);
-    setYoutubeId(msg)
-  });
-  
-})();
+      socket.on("videoID", function async(msg) {
+        setGetId(msg)
+        console.log(msg)
+      });
+
+      
+    },[])
+
+    let saveYoutubeId = ()=>{
+      setYoutubeId(getId)
+    }
+
+    useEffect(()=>{
+      if(getId!==""){
+        saveYoutubeId()
+        console.log(getId)
+
+      }
+    },[getId])
+
+
     return(
 
     <div className="youtube-class">
-        <ReactPlayer  url={'https://www.youtube.com/watch?v='+youtubeId} playing controls/>
+      {youtubeId!==""?
+      <ReactPlayer  url={'http://www.youtube.com/watch?v='+youtubeId} playing={true} controls={true} />
+    :""}
     </div>
    
     )

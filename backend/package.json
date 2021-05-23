@@ -9,6 +9,7 @@
     "dev": "concurrently \"npm run back\" \"npm run front\""
   },
   "dependencies": {
+    "basic-logger": "^0.4.4",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",

@@ -13,28 +13,28 @@ module.exports = (data) => {
     // emotion을 받고 나서 여기서 검색 키워드로 변환 할지, emotion을 넣어줄 때 아예 사전에 검색 키워드로 변환해서 넣어 줄 지 정해야 함.
     console.log(typeof data.toString())
     let emotion;
-    if(data.toString()==="anger"){
+    if(data.data.toString()==="anger"){
         emotion="화난";
     }
-    else if(data.toString()==="contempt"){
+    if(data.data.toString()==="contempt"){
         emotion="치유";
     }
-    else if(data.toString()==="disgust"){
+    if(data.data.toString()==="disgust"){
         emotion="기분전환";
     }
-    else if(data.toString()==="fear"){
+    if(data.data.toString()==="fear"){
         emotion="안정";
     }
-    else if(data.toString()==="happiness"){
+    if(data.data.toString()==="happiness"){
         emotion="행복";
     }
-    else if(data.toString()==="neutral"){
+    if(data.data.toString()==="neutral"){
         emotion="잔잔";
     }
-    else if(data.toString()==="sadmess"){
+    if(data.data.toString()==="sadness"){
         emotion="슬픈";
     }
-    else if(data.toString()==="suprise"){
+    if(data.data.toString()==="surprise"){
         emotion="일상";
     }
     
@@ -67,10 +67,8 @@ module.exports = (data) => {
         //console.log(result)
         const items = result["items"];
         global.uid = items[0].id.videoId;
-        axios.post('http://localhost:3001/getdata', {
-            item: items
-        })
-        return items      
+        
+            
         
     })
     .catch(function (err) {

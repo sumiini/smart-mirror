@@ -10,28 +10,16 @@ var usersRouter = require('./routes/users');
 var app = express();
 app.io = require('socket.io')();
 
-let uid = ""
-global.uid = uid
+//let uid = ""
+//global.uid = uid
 
 app.io.on('connection', function(socket){
+  console.log("global uid",global.uid)
 
-  console.log("a user connected");
-  socket.broadcast.emit('hi');
-    
-  socket.on('init', function(data) {
-		console.log(data.name);
-		socket.emit('welcome', `hello! ${data.name}`);
-	});
-
-  socket.broadcast.emit('hi');
-  socket.on('disconnect', function(){
-      console.log('user disconnected');
-  });
-    
-  socket.on('youtube', function(msg){
-      console.log('message: ' + msg);
-      app.io.emit('videoID', global.uid);
-  });
+  if(global.uid!==undefined){
+    console.log("global.uid",global.uid)
+    app.io.emit('videoID', global.uid);
+  }
 
 });
 
