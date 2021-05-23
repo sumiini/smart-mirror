@@ -13,15 +13,20 @@ app.io = require('socket.io')();
 //let uid = ""
 //global.uid = uid
 
-app.io.on('connection', function(socket){
-  console.log("global uid",global.uid)
 
-  if(global.uid!==undefined){
-    console.log("global.uid",global.uid)
-    app.io.emit('videoID', global.uid);
-  }
+  app.io.on('connection', function(socket){
+    console.log("global uid",global.uid)
+  
+   
+      console.log("global.uid",global.uid)
+      if(global.uid!==undefined){
+        app.io.emit('videoID', global.uid);
 
-});
+      }
+    
+  
+  });
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
