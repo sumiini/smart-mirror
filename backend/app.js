@@ -6,27 +6,20 @@ var logger = require('morgan');
 var cors=require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+//let globals = require('globals')
 var app = express();
 app.io = require('socket.io')();
 
 //let uid = ""
 //global.uid = uid
 
-
   app.io.on('connection', function(socket){
     console.log("global uid",global.uid)
-  
-   
+    if(global.uid!==undefined){
       console.log("global.uid",global.uid)
-      if(global.uid!==undefined){
-        app.io.emit('videoID', global.uid);
-
-      }
-    
-  
+      app.io.emit('videoID', global.uid);
+    }
   });
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

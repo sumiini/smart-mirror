@@ -4,8 +4,9 @@ var router = express.Router();
 const socketio = require('socket.io')
 const fetch = require('node-fetch');
 const path =require('path');
+global._ = require('underscore');
 require("dotenv").config({ path: path.join(__dirname, './.env') });
-let uid = "";
+//let uid = "";
 
 router.io = require('socket.io')();
 //parameter로 emotion 넣을 것. 현재 test용이라 안넣음.
@@ -65,10 +66,12 @@ module.exports = (data) => {
     })
     .then(function (result) {
         //console.log(result)
-        const items = result["items"];
-        global.uid = items[0].id.videoId;
-        
-            
+        const items = result["items"]
+        global.uid = items[0].id.videoId
+        let Globals={
+            'id':items[0].id.videoId
+        }
+        module.exports=Globals;
         
     })
     .catch(function (err) {

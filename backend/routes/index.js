@@ -33,7 +33,9 @@ router.get('/button', function(req,res,next){
 
 router.post('/getdata', function(req,res,next){
   console.log(req.body.item[0].id.videoId)
-  
+  if(res.body.id==="id"){
+    res.send(req.body.item[0].id.videoId)
+  }
 })
 
 module.exports = router;

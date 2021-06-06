@@ -9,24 +9,28 @@ const Youtube =()=>{
 
     useEffect(()=>{
       const socket = socketio.connect('http://localhost:3001/');
-
       socket.on("videoID", function async(msg) {
         setGetId(msg)
         console.log(msg)
       });
 
-      
+      getId()
     },[])
+
+    const getId = async(e)=>{
+      const res = await axios.post('http://localhost:3001/getdata',{id:"id"})
+      console.log(res.data)
+    }
 
     let saveYoutubeId = ()=>{
       setYoutubeId(getId)
+      
     }
 
     useEffect(()=>{
       if(getId!==""){
         saveYoutubeId()
         console.log(getId)
-
       }
     },[getId])
 
